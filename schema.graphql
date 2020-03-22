@@ -1,0 +1,11 @@
+"""
+Root query
+"""
+type Query {
+  users: [User]
+}
+
+type User {
+  id: ID
+  name: String
+}
