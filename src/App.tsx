@@ -1,12 +1,11 @@
 import React, { Suspense } from 'react';
-import './App.css';
 import graphql from 'babel-plugin-relay/macro';
 import {
   RelayEnvironmentProvider,
   preloadQuery,
   usePreloadedQuery
 } from 'react-relay/hooks';
-import RelayEnvironment from './RelayEnvironment';
+import RelayEnvironment from './relay/Environment';
 
 const UsersQuery = graphql`
   query AppQuery {
@@ -19,8 +18,6 @@ const UsersQuery = graphql`
 const preloadedQuery = preloadQuery(RelayEnvironment, UsersQuery, {});
 
 function App(props: any) {
-  console.log(props);
-
   const data: any = usePreloadedQuery(UsersQuery, props.preloadedQuery);
   console.log(data);
 
