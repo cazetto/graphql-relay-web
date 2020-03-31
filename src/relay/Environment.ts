@@ -1,12 +1,12 @@
 import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 import fetchQuery from './fetchQuery';
 
-const network = Network.create(fetchQuery);
+let network = Network.create(fetchQuery);
 
-const source = new RecordSource();
-const store = new Store(source);
+let source = new RecordSource();
+let store = new Store(source);
 
-const env = new Environment({
+let env = new Environment({
   network,
   store
 });

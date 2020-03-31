@@ -7,18 +7,18 @@ import {
 } from 'react-relay/hooks';
 import RelayEnvironment from './relay/Environment';
 
-const UsersQuery = graphql`
+let UsersQuery = graphql`
   query AppQuery {
     users {
-      name
+      firstName
     }
   }
 `;
 
-const preloadedQuery = preloadQuery(RelayEnvironment, UsersQuery, {});
+let preloadedQuery = preloadQuery(RelayEnvironment, UsersQuery, {});
 
 function App(props: any) {
-  const data: any = usePreloadedQuery(UsersQuery, props.preloadedQuery);
+  let data: any = usePreloadedQuery(UsersQuery, props.preloadedQuery);
   console.log(data);
 
   return (

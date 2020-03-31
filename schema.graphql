@@ -1,11 +1,53 @@
-"""
-Root query
-"""
+type CreditCard {
+  name: String
+  number: String
+  cvv: String
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+"""Root Mutation"""
+type Mutation {
+  """Create a new user"""
+  createUser(firstName: String!, lastName: String, userName: String!, email: String!, password: String!, gender: Gender): User
+}
+
+type Product {
+  id: ID
+  name: String
+  description: String
+  price: String
+  stockQtt: Int
+  seller: Seller
+}
+
+"""Root query"""
 type Query {
+  login(email: String, userName: String, password: String): User
+  verifyToken(token: String): User
   users: [User]
+  products: [Product]
+  sellers: [Seller]
+}
+
+type Seller {
+  id: ID
+  name: String
+  recipient: String
+  products: [Product]
 }
 
 type User {
   id: ID
-  name: String
+  firstName: String
+  lastName: String
+  email: String
+  userName: String
+  gender: String
+  token: String
+  creditCards: [CreditCard]
 }
+

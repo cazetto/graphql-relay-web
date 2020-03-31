@@ -1,11 +1,11 @@
 import { Variables } from 'react-relay';
 // import { RequestNode } from 'relay-runtime';
 
-const GRAPHQL_SERVER_URL: string = 'http://localhost:7000/graphql';
+let GRAPHQL_SERVER_URL: string = 'http://localhost:7000/graphql';
 
-const fetchQuery = async (request: any, variables: Variables) => {
+async function fetchQuery(request: any, variables: Variables) {
   try {
-    const body = await fetch(GRAPHQL_SERVER_URL, {
+    let body = await fetch(GRAPHQL_SERVER_URL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -24,6 +24,6 @@ const fetchQuery = async (request: any, variables: Variables) => {
 
     throw error;
   }
-};
+}
 
 export default fetchQuery;

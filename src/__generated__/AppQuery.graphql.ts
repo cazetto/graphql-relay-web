@@ -1,12 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash a56364723fbfd9aa5ad71cd8dfb18cc2 */
+/* @relayHash af5621b5136d8c87da319f353133cf45 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
     readonly users: ReadonlyArray<{
-        readonly name: string | null;
+        readonly firstName: string | null;
     } | null> | null;
 };
 export type AppQuery = {
@@ -19,7 +19,7 @@ export type AppQuery = {
 /*
 query AppQuery {
   users {
-    name
+    firstName
     id
   }
 }
@@ -29,7 +29,7 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "firstName",
   "args": null,
   "storageKey": null
 };
@@ -86,10 +86,10 @@ return {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  users {\n    name\n    id\n  }\n}\n",
+    "text": "query AppQuery {\n  users {\n    firstName\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = 'a2d38889eeba8c4c5bb14fb90b38e811';
+(node as any).hash = '2d094bdf48364d02fc38a2b2c83b32b9';
 export default node;
