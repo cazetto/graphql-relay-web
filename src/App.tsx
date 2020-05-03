@@ -3,14 +3,14 @@ import graphql from 'babel-plugin-relay/macro';
 import {
   RelayEnvironmentProvider,
   preloadQuery,
-  usePreloadedQuery
+  usePreloadedQuery,
 } from 'react-relay/hooks';
 import RelayEnvironment from './relay/Environment';
 
 let UsersQuery = graphql`
   query AppQuery {
     users {
-      firstName
+      name
     }
   }
 `;
