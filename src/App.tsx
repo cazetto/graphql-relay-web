@@ -10,7 +10,12 @@ import RelayEnvironment from './relay/Environment';
 let UsersQuery = graphql`
   query AppQuery {
     users {
-      name
+      firstName
+      lastName
+      userName
+    }
+    products {
+      id
     }
   }
 `;
