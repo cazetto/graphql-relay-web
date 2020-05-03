@@ -12,12 +12,13 @@ import Authors from './features/Authors';
 
 let AppQuery = graphql`
   query AppQuery {
-    users {
+    me {
       id
       firstName
       lastName
       userName
     }
+
     products {
       id
       name
@@ -50,7 +51,7 @@ function App(props: any) {
             <Products products={appData.products} />
           </Route>
           <Route path="/authors">
-            <Authors authors={appData.users} />
+            <Authors />
           </Route>
         </Switch>
       </div>

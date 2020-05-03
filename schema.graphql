@@ -10,6 +10,7 @@ type Product {
 type Query {
   users: [User]
   products: [Product]
+  me: User
 }
 
 type User {
