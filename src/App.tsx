@@ -6,30 +6,38 @@ import {
   usePreloadedQuery,
 } from 'react-relay/hooks';
 import RelayEnvironment from './relay/Environment';
+import Products from './features/Products';
+import Authors from './features/Authors';
 
-let UsersQuery = graphql`
+let AppQuery = graphql`
   query AppQuery {
     users {
+      id
       firstName
       lastName
       userName
     }
     products {
       id
+      name
+      description
+      price
+      stockQtt
     }
   }
 `;
 
-let preloadedQuery = preloadQuery(RelayEnvironment, UsersQuery, {});
+let preloadedQuery = preloadQuery(RelayEnvironment, AppQuery, {});
 
 function App(props: any) {
-  let data: any = usePreloadedQuery(UsersQuery, props.preloadedQuery);
-  console.log(data);
-
+  let appData: any = usePreloadedQuery(AppQuery, props.preloadedQuery);
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <>
+      <h1>Products</h1>
+      <Products products={appData.products} />
+      <h1>Authors</h1>
+      <Authors authors={appData.users} />
+    </>
   );
 }
 

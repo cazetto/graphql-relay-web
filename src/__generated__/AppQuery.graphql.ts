@@ -1,17 +1,22 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 130625e08954859648672d60e2bbdc7b */
+/* @relayHash 4f92cc99a268e656bc4d028fa72d7637 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type AppQueryVariables = {};
 export type AppQueryResponse = {
     readonly users: ReadonlyArray<{
+        readonly id: string | null;
         readonly firstName: string | null;
         readonly lastName: string | null;
         readonly userName: string | null;
     } | null> | null;
     readonly products: ReadonlyArray<{
         readonly id: string | null;
+        readonly name: string | null;
+        readonly description: string | null;
+        readonly price: string | null;
+        readonly stockQtt: number | null;
     } | null> | null;
 };
 export type AppQuery = {
@@ -24,13 +29,17 @@ export type AppQuery = {
 /*
 query AppQuery {
   users {
+    id
     firstName
     lastName
     userName
-    id
   }
   products {
     id
+    name
+    description
+    price
+    stockQtt
   }
 }
 */
@@ -39,43 +48,85 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "firstName",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "lastName",
-  "args": null,
-  "storageKey": null
-},
-v2 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "userName",
-  "args": null,
-  "storageKey": null
-},
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v4 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "products",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Product",
-  "plural": true,
-  "selections": [
-    (v3/*: any*/)
-  ]
-};
+v1 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "users",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "User",
+    "plural": true,
+    "selections": [
+      (v0/*: any*/),
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "firstName",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "lastName",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "userName",
+        "args": null,
+        "storageKey": null
+      }
+    ]
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "products",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "Product",
+    "plural": true,
+    "selections": [
+      (v0/*: any*/),
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "name",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "description",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "price",
+        "args": null,
+        "storageKey": null
+      },
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "stockQtt",
+        "args": null,
+        "storageKey": null
+      }
+    ]
+  }
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -84,55 +135,22 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "users",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "User",
-        "plural": true,
-        "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
-          (v2/*: any*/)
-        ]
-      },
-      (v4/*: any*/)
-    ]
+    "selections": (v1/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "AppQuery",
     "argumentDefinitions": [],
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "users",
-        "storageKey": null,
-        "args": null,
-        "concreteType": "User",
-        "plural": true,
-        "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
-          (v2/*: any*/),
-          (v3/*: any*/)
-        ]
-      },
-      (v4/*: any*/)
-    ]
+    "selections": (v1/*: any*/)
   },
   "params": {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  users {\n    firstName\n    lastName\n    userName\n    id\n  }\n  products {\n    id\n  }\n}\n",
+    "text": "query AppQuery {\n  users {\n    id\n    firstName\n    lastName\n    userName\n  }\n  products {\n    id\n    name\n    description\n    price\n    stockQtt\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
-(node as any).hash = '97f684db804e6702ef65174107e26052';
+(node as any).hash = '63b9f07053c4ae47d4e42b5e2daf4303';
 export default node;
