@@ -3,7 +3,6 @@ import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 import { Author } from './typing';
 import List from './components/List';
-
 import RelayEnvironment from '../../relay/Environment';
 
 const AuthorsQuery = graphql`
@@ -27,7 +26,12 @@ const Authors: FC<{}> = () => {
         if (error) {
           return <div>{error.message}</div>;
         } else if (props) {
-          return <List items={(props as { users: Author[] }).users} />;
+          return (
+            <div>
+              <h1>Author List</h1>
+              <List items={(props as { users: Author[] }).users} />
+            </div>
+          );
         }
         return <div>Loading</div>;
       }}

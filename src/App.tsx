@@ -18,14 +18,6 @@ let AppQuery = graphql`
       lastName
       userName
     }
-
-    products {
-      id
-      name
-      description
-      price
-      stockQtt
-    }
   }
 `;
 
@@ -33,13 +25,15 @@ let preloadedQuery = preloadQuery(RelayEnvironment, AppQuery, {});
 
 function App(props: any) {
   let appData: any = usePreloadedQuery(AppQuery, props.preloadedQuery);
+  console.log(appData);
+
   return (
     <Router>
       <div>
         <nav>
           <ul>
             <li>
-              <Link to="/products">Products</Link>
+              <Link to="/">Products</Link>
             </li>
             <li>
               <Link to="/authors">Authors</Link>
@@ -47,8 +41,8 @@ function App(props: any) {
           </ul>
         </nav>
         <Switch>
-          <Route path="/products">
-            <Products products={appData.products} />
+          <Route exact path="/">
+            <Products />
           </Route>
           <Route path="/authors">
             <Authors />
