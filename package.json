@@ -26,10 +26,12 @@
     ]
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.1.5",
     "get-graphql-schema": "^2.1.2",
     "react": "^0.0.0-experimental-d7382b6c4",
     "react-dom": "^0.0.0-experimental-d7382b6c4",
     "react-relay": "^0.0.0-experimental-8cc94ddc",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "relay-runtime": "^9.0.0",
     "typescript": "~3.7.2"

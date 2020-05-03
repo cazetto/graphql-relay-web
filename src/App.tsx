@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import graphql from 'babel-plugin-relay/macro';
 import {
   RelayEnvironmentProvider,
@@ -32,12 +33,28 @@ let preloadedQuery = preloadQuery(RelayEnvironment, AppQuery, {});
 function App(props: any) {
   let appData: any = usePreloadedQuery(AppQuery, props.preloadedQuery);
   return (
-    <>
-      <h1>Products</h1>
-      <Products products={appData.products} />
-      <h1>Authors</h1>
-      <Authors authors={appData.users} />
-    </>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/products">Products</Link>
+            </li>
+            <li>
+              <Link to="/authors">Authors</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route path="/products">
+            <Products products={appData.products} />
+          </Route>
+          <Route path="/authors">
+            <Authors authors={appData.users} />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
